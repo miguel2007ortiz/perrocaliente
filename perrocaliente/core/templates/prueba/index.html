@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Aprendices</title>
+</head>
+<body>
+    <header class="encabezado">
+        <h1>Listado de Aprendices SENA</h1>
+    </header>
+
+    <main class="contenedor-principal">
+        <section class="tabla-seccion">
+            <table class="tabla-aprendices">
+                <thead>
+                    <tr>
+                        <th>Documento</th>
+                        <th>Nombre Completo</th>
+                        <th>Correo Electrónico</th>
+                        <th>Ficha</th>
+                        <th>Programa</th>
+                        <th>Competencias</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for aprendiz in aprendices %}
+                    <tr class="fila-aprendiz">
+                        <td class="col-documento">{{ aprendiz.documento }}</td>
+                        <td class="col-nombre">{{ aprendiz.nombre }} {{ aprendiz.apellido }}</td>
+                        <td class="col-correo">{{ aprendiz.correo }}</td>
+                        <td class="col-ficha">
+                            {% if aprendiz.ficha %}
+                                {{ aprendiz.ficha.grupo }}
+                            {% else %}
+                                <span>Sin ficha</span>
+                            {% endif %}
+                        </td>
+                        <td class="col-programa">
+                            {% if aprendiz.ficha %}
+                                {{ aprendiz.ficha.nombre }}
+                            {% else %}
+                                <span>No asignado</span>
+                            {% endif %}
+                        </td>
+                        <td class="col-competencias">
+                            <ul class="lista-competencias">
+                                {% for comp in aprendiz.competencia.all %}
+                                    <li class="item-competencia">{{ comp.descripcion }}</li>
+                                {% empty %}
+                                    <li class="sin-competencias">Sin competencias matriculadas</li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                        <td class="col-estado">
+                            {% if aprendiz.activo %}
+                                <span class="estado activo">Activo</span>
+                            {% else %}
+                                <span class="estado inactivo">Inactivo</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr class="fila-vacia">
+                        <td colspan="7">No hay aprendices registrados actualmente.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>
