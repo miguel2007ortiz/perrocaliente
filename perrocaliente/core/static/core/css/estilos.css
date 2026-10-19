@@ -1,0 +1,225 @@
+/* ==========================================================
+   RESET & VARIABLES
+   ========================================================== */
+:root {
+    --color-primario: #00324d;       /* Azul petróleo oscuro elegante */
+    --color-acento: #39a900;         /* Verde institucional SENA */
+    --color-fondo: #f4f7f6;
+    --color-blanco: #ffffff;
+    --color-texto: #2c3e50;
+    --color-texto-suave: #6b7280;
+    --color-borde: #e5e7eb;
+    --sombra-card: 0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+    --sombra-hover: 0 4px 15px rgba(0, 0, 0, 0.08);
+    --radio: 14px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    padding: 40px 20px;
+    min-height: 100vh;
+}
+
+/* ==========================================================
+   ENCABEZADO DECORATIVO
+   ========================================================== */
+.encabezado {
+    max-width: 1200px;
+    margin: 0 auto 30px auto;
+    text-align: center;
+}
+
+.logo-area {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.badge-sena {
+    background-color: var(--color-acento);
+    color: var(--color-blanco);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    box-shadow: 0 3px 8px rgba(57, 169, 0, 0.35);
+}
+
+.encabezado h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primario);
+    letter-spacing: -0.5px;
+}
+
+.subtitulo {
+    font-size: 0.95rem;
+    color: var(--color-texto-suave);
+}
+
+/* ==========================================================
+   CONTENEDOR Y TABLA ELEGANTE
+   ========================================================== */
+.contenedor-principal {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tabla-seccion {
+    background: var(--color-blanco);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra-card);
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.tabla-aprendices {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.92rem;
+}
+
+/* Cabecera de la tabla */
+.tabla-aprendices thead {
+    background: linear-gradient(135deg, #00324d 0%, #06496f 100%);
+    color: var(--color-blanco);
+}
+
+.tabla-aprendices thead th {
+    padding: 16px 20px;
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    border: none;
+}
+
+/* Filas y celdas */
+.tabla-aprendices tbody td {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--color-borde);
+    vertical-align: middle;
+}
+
+.fila-aprendiz {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Efecto cebra sutil */
+.fila-aprendiz:nth-child(even) {
+    background-color: #fbfcfd;
+}
+
+/* Hover decorativo en cada fila */
+.fila-aprendiz:hover {
+    background-color: #f0f7ff;
+    transform: scale(1.002);
+}
+
+/* Columnas particulares */
+.col-documento strong {
+    color: var(--color-primario);
+    font-family: monospace;
+    font-size: 0.95rem;
+}
+
+.col-correo {
+    color: var(--color-texto-suave);
+    font-size: 0.88rem;
+}
+
+.col-nombre {
+    font-weight: 500;
+}
+
+/* Badge para el número de ficha */
+.tag-ficha {
+    background-color: #e0f2fe;
+    color: #0369a1;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+.badge-vacio {
+    color: #9ca3af;
+    font-style: italic;
+    font-size: 0.85rem;
+}
+
+/* Lista decorativa de competencias */
+.lista-competencias {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.item-competencia {
+    font-size: 0.82rem;
+    background: #f3f4f6;
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: #374151;
+    border-left: 3px solid var(--color-acento);
+}
+
+.sin-competencias {
+    font-size: 0.8rem;
+    color: #9ca3af;
+    font-style: italic;
+}
+
+/* Indicadores de Estado (Activo / Inactivo) */
+.estado {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.estado.activo {
+    background-color: #dcfce7;
+    color: #15803d;
+}
+
+.estado.inactivo {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+/* Mensaje sin registros */
+.fila-vacia td {
+    text-align: center;
+    padding: 40px;
+    color: #9ca3af;
+    font-size: 0.95rem;
+}
+
+/* ==========================================================
+   RESPONSIVE DESIGN (Adaptable a móviles y pantallas chicas)
+   ========================================================== */
+@media (max-width: 900px) {
+    .tabla-seccion {
+        overflow-x: auto;
+    }
+}

@@ -1,13 +1,22 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listado de Aprendices</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'core/css/estilos.css' %}">
 </head>
 <body>
     <header class="encabezado">
-        <h1>Listado de Aprendices SENA</h1>
+        <div class="logo-area">
+            <span class="badge-sena">SENA</span>
+            <h1>Listado General de Aprendices</h1>
+        </div>
+        <p class="subtitulo">Gestión y control de matrícula de programas y competencias</p>
     </header>
 
     <main class="contenedor-principal">
@@ -27,21 +36,21 @@
                 <tbody>
                     {% for aprendiz in aprendices %}
                     <tr class="fila-aprendiz">
-                        <td class="col-documento">{{ aprendiz.documento }}</td>
+                        <td class="col-documento"><strong>{{ aprendiz.documento }}</strong></td>
                         <td class="col-nombre">{{ aprendiz.nombre }} {{ aprendiz.apellido }}</td>
                         <td class="col-correo">{{ aprendiz.correo }}</td>
                         <td class="col-ficha">
                             {% if aprendiz.ficha %}
-                                {{ aprendiz.ficha.grupo }}
+                                <span class="tag-ficha">{{ aprendiz.ficha.grupo }}</span>
                             {% else %}
-                                <span>Sin ficha</span>
+                                <span class="badge-vacio">Sin ficha</span>
                             {% endif %}
                         </td>
                         <td class="col-programa">
                             {% if aprendiz.ficha %}
                                 {{ aprendiz.ficha.nombre }}
                             {% else %}
-                                <span>No asignado</span>
+                                <span class="badge-vacio">No asignado</span>
                             {% endif %}
                         </td>
                         <td class="col-competencias">
@@ -55,9 +64,9 @@
                         </td>
                         <td class="col-estado">
                             {% if aprendiz.activo %}
-                                <span class="estado activo">Activo</span>
+                                <span class="estado activo">● Activo</span>
                             {% else %}
-                                <span class="estado inactivo">Inactivo</span>
+                                <span class="estado inactivo">● Inactivo</span>
                             {% endif %}
                         </td>
                     </tr>
